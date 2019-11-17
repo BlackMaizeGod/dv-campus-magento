@@ -3,7 +3,23 @@
 // ___________________________________
 
 @color-dark-blue: #00008b;
+@color-success: #5cb85c;
+@color-success2: #218838;
+@text__color: @color-white;
 
+//
+//  Color nesting
+//  ___________________________________
+
+@theme__color__primary: @color-success;
+
+
+//
+// Buttons
+// _____________________________________
+
+@button-primary__hover__background: @color-success2;
+@button-primary__hover__border: 1px solid @color-success2;
 
 //
 // Header
@@ -13,11 +29,13 @@
 
 //
 // Navigation
-//
+//______________________________________
+
 @navigation__background: @color-blue1;
 @navigation-desktop-level0-item__color: @color-white;
 @navigation-desktop-level0-item__active__color: @color-gray91;
 @navigation-desktop-level0-item__hover__color: @color-gray91;
+@navigation-desktop-level0-item__active__border-color: @color-white;
 @submenu-desktop-item__color: @color-black;
 @submenu-desktop-item__hover__color: @color-black;
 
@@ -28,4 +46,17 @@
 @_link-color-visited: @color-white;
 @_link-text-decoration-visited: @color-white;
 @copyright__background-color: @color-dark-blue;
+@footer__background-color: @color-blue1;
+@footer-links-color: @color-white;
+@footer-links-color-hover: @color-gray-darken2;
+
+//
+// Tabs
+// _____________________________________
+
+@tab-control__background-color: @color-dark-blue;
+@tab-control__hover__background-color: @color-blue1;
+@tab-control__active__background-color: @color-blue1;
+@tab-content__background-color: @color-white;
+
 
