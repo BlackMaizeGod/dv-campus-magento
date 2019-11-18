@@ -5,7 +5,9 @@
 @color-dark-blue: #00008b;
 @color-success: #5cb85c;
 @color-success2: #218838;
-@text__color: @color-white;
+@color-light-blue: #cce5ff;
+@color-light-red: #ffcccb;
+@color-gray-light7: #b3b7ba;
 
 //
 //  Color nesting
@@ -18,8 +20,10 @@
 // Buttons
 // _____________________________________
 
-@button-primary__hover__background: @color-success2;
-@button-primary__hover__border: 1px solid @color-success2;
+@button-primary__background: lighten(@color-dark-blue, 10%);
+@button-primary__border: 1px solid lighten(@color-dark-blue, 10%);
+@button-primary__hover__background: @color-dark-blue;
+@button-primary__hover__border: 1px solid @color-dark-blue;
 
 //
 // Header
@@ -48,15 +52,119 @@
 @copyright__background-color: @color-dark-blue;
 @footer__background-color: @color-blue1;
 @footer-links-color: @color-white;
-@footer-links-color-hover: @color-gray-darken2;
+@footer-links-color-hover: @color-white;
 
 //
 // Tabs
 // _____________________________________
-
+@text__color__muted: @color-white;
 @tab-control__background-color: @color-dark-blue;
+@tab-control__color: @text__color__muted;
 @tab-control__hover__background-color: @color-blue1;
+@tab-control__hover__color: @text__color__muted;
 @tab-control__active__background-color: @color-blue1;
+@tab-control__active__color: @text__color__muted;
 @tab-content__background-color: @color-white;
 
 
+//
+// Links
+// ______________________________________
+
+@link__color: @color-orange-red1;
+@link__hover__color: @color-orange-red1;
+
+//
+// Messages
+// _______________________________________
+
+//
+// Success
+// _____________________________________
+
+@message-success-icon__color-inner: @color-blue1;
+@message-success__color: @color-gray-light7;
+@message-success__background: @color-dark-blue;
+
+@message-success-link__color: @color-white;
+@message-success-link__color-hover: @color-white;
+@message-success-link__color-active: @color-white;
+
+//
+// Info
+// _____________________________________
+
+@message-info-icon: @icon-info;
+@message-info-icon__color-inner: @color-blue1;
+@message-info__color: @color-blue1;
+@message-info__background: @color-light-blue;
+@message-info-icon__background: @color-blue1;
+
+@message-info-link__color: @color-black;
+@message-info-link__color-hover: @color-black;
+@message-info-link__color-active: @color-black;
+
+//
+// Error
+// ______________________________________
+
+@message-error-icon__color-inner: @color-brownie-light1;
+@message-error__color: @color-brownie1;
+@message-error__background: @color-yellow-light1;
+@message-error-icon__background: @color-brownie-light1;
+
+@message-error-link__color: @color-black;
+@message-error-link__color-hover: @color-black;
+@message-error-link__color-active: @color-black;
+
+//
+// Warning
+// ______________________________________
+
+@message-warning-icon: @icon-warning;
+@message-warning-icon__color-inner: @color-brownie-light1;
+@message-warning-icon__color-lateral: @color-brownie-light1;
+@message-warning__color: @color-red11;
+@message-warning__background: @color-light-red;
+@message-warning__border-color: @color-brownie1;
+
+@message-warning-link__color: @color-blue1;
+@message-warning-link__color-hover: @color-blue1;
+@message-warning-link__color-active: @color-blue1;
+
+//
+// Mobile
+// _______________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .product.data.items > .item.content {
+    background: unset;
+  }
+
+  .navigation,
+  .nav-sections {
+    color: @color-black;
+    background-color: @color-white;
+  }
+
+  .nav-sections-item-title {
+    border: unset;
+  }
+
+  .navigation .level0.active > a:not(.ui-state-active), .navigation .level0.has-active > a:not(.ui-state-active) {
+    border-color: @color-black;
+  }
+
+  .section-item-title.nav-sections-item-title.active a {
+    color: @color-black;
+  }
+
+  .section-item-title.nav-sections-item-title a {
+    color: @color-white;
+  }
+
+  .section-item-title.nav-sections-item-title a:hover {
+    text-decoration: underline;
+  }
+
+}
