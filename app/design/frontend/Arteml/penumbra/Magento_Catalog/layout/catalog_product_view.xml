@@ -1,6 +1,14 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <move element="product.info.social" destination="product.info.main" after="page.main.title" />
+        <move element="product.info.social" destination="product.info.main" after="page.main.title"/>
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="product.info.massage"
+                   template="Magento_Catalog::message/message.phtml"
+                   after="product.info.form.content"
+            />
+        </referenceContainer>
     </body>
 </page>
