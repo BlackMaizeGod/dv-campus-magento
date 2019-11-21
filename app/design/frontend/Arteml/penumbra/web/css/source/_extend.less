@@ -132,24 +132,24 @@
 @message-warning-link__color-hover: @color-blue1;
 @message-warning-link__color-active: @color-blue1;
 
-.message.error.product-info-message > *:first-child:before {
-  content: unset;
-}
+//
+// Common
+// _______________________________________
 
-.message-error.error.message.product-info-message {
-  padding: 12px 20px 12px 20px;
-}
+& when (@media-common = true) {
 
-.left-column-image {
-  text-align: center;
-}
-
-.newsletter {
-  & > .content {
-    & > p {
-      color: @color-white;
-    }
+  .message.error.product-info-message > *:first-child:before {
+    content: unset;
   }
+
+  .message-error.error.message.product-info-message {
+    padding: 12px 20px 12px 20px;
+  }
+
+  .left-column-image {
+    text-align: center;
+  }
+
 }
 
 //
@@ -191,4 +191,26 @@
     text-align: center;
   }
 
+  .newsletter {
+    & > .content {
+      & > p {
+        color: @color-black;
+      }
+    }
+  }
+
+}
+
+//
+// Desktop
+// _______________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .newsletter {
+    & > .content {
+      & > p {
+        color: @color-white;
+      }
+    }
+  }
 }
