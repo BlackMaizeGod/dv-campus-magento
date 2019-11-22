@@ -1,0 +1,5 @@
+<?php /** @var \Arteml\ControllerDemo\Block\Info\AboutMe $block */ ?>
+<div class="about-me-position">
+    <p><?= $block->escapeHtml(__('Full name: %1', $block->getFullName())) ?></p>
+    <p><?= $block->escapeUrl(__('Repository URL: %1', $block->getRepository())) ?></p>
+</div>
