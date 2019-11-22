@@ -30,7 +30,7 @@ case $case in
       user=$db_name
     fi
 
-    mysqldump --column-statistics=0 -u"$user" -p"$password" -h 127.0.0.1 --port=$port "$db_name" | gzip > var/db.sql.gz
+    mysqldump -u"$user" -p"$password" -h 127.0.0.1 --port=$port "$db_name" | gzip > var/db.sql.gz
     ;;
   2|unpack)
     dir="$PWD/$DIRECTORY"
