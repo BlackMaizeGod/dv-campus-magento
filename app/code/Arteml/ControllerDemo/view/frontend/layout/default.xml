@@ -2,22 +2,13 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceContainer name="header.container">
-            <container name="header.info.wrapper" htmlClass="header-info wrapper" htmlTag="div"
-                       before="header.panel.wrapper">
-                <block class="Magento\Cms\Block\Block" name="header.info.title">
-                    <arguments>
-                        <argument name="block_id" xsi:type="string">header_info</argument>
-                    </arguments>
-                </block>
-            </container>
-        </referenceContainer>
-        <referenceContainer name="sidebar.additional">
-            <block class="Magento\Cms\Block\Block" name="left.column.image">
+        <referenceBlock name="footer_links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="artem-lohvynenko-link" before="search-term-popular-link">
                 <arguments>
-                    <argument name="block_id" xsi:type="string">left_column_image</argument>
+                    <argument name="label" xsi:type="string">Artem Lohvynenko</argument>
+                    <argument name="path" xsi:type="string">about-me/forward/forward</argument>
                 </arguments>
             </block>
-        </referenceContainer>
+        </referenceBlock>
     </body>
 </page>

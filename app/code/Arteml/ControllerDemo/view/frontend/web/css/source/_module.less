@@ -1,0 +1,25 @@
+& when (@media-common = true) {
+  .about-me-position {
+    margin: 15% 0 0 0;
+    display: flex;
+    justify-content: center;
+
+    & > .about-me-wrapper {
+      & > p {
+        font-size: 16px;
+      }
+    }
+  }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .about-me-position {
+    margin: 5% 0 0 0;
+    justify-content: left;
+
+    & > .about-me-wrapper {
+      & > p {
+        font-size: 14px;
+      }
+    }
+  }
+}

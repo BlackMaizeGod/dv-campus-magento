@@ -238,6 +238,7 @@ return [
         'Amazon_Login' => 1,
         'Amazon_Payment' => 1,
         'Arteml_Cms' => 1,
+        'Arteml_ControllerDemo' => 1,
         'Dotdigitalgroup_Email' => 1,
         'Klarna_Core' => 1,
         'Klarna_Ordermanagement' => 1,
