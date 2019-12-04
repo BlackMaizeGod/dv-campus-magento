@@ -1,0 +1,20 @@
+& when (@media-common = true) {
+  .registration-for-dealer-wrapper {
+    padding: 40px 0 0 0;
+
+    & > p {
+      color: @color-orange-red1;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .registration-for-dealer-wrapper {
+    text-align: center;
+  }
+}
