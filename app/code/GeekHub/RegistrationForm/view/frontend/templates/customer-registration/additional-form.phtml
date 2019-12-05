@@ -1,0 +1,10 @@
+<?php /** @var \Magento\Framework\View\Element\Template $block */ ?>
+<div class="registration-for-dealer-wrapper" data-mage-init='{"additionalRegistrationForm": {}}'>
+    <p class="non-target"><?= $block->escapeHtml(__('Registration for dealer')) ?></p>
+</div>
+
+<div id="header-registration-modal" hidden="hidden">
+    <div id="registration-form-content-wrapper">
+        <?= $block->getChildHtml('registration.for.dealer.form') ?>
+    </div>
+</div>

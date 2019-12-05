@@ -240,6 +240,7 @@ return [
         'Arteml_Cms' => 1,
         'Arteml_ControllerDemo' => 1,
         'Dotdigitalgroup_Email' => 1,
+        'GeekHub_RegistrationForm' => 1,
         'Klarna_Core' => 1,
         'Klarna_Ordermanagement' => 1,
         'Klarna_Kp' => 1,

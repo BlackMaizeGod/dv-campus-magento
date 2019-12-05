@@ -1,0 +1,24 @@
+<?php /** @var \GeekHub\RegistrationForm\Block\Widget\Fax $block */ ?>
+
+<div class="field fax <?= $block->isRequired() ? 'required' : '' ?>">
+    <label for="modal_dealer_fax" class="label">
+        <span>
+            <?= $block->escapeHtml(__('Fax')) ?>
+        </span>
+    </label>
+    <div class="control">
+        <?php
+        $_validationClass = $block->escapeHtmlAttr(
+            $this->helper(\Magento\Customer\Helper\Address::class)
+                ->getAttributeValidationClass('fax')
+        );
+        ?>
+        <input type="text"
+               name="fax"
+               id="modal_dealer_fax"
+               value="<?= $block->escapeHtmlAttr($block->getFax()) ?>"
+               title="<?= $block->escapeHtmlAttr(__('Fax')) ?>"
+               class="input-text <?= $_validationClass ?: '' ?>"
+        >
+    </div>
+</div>
