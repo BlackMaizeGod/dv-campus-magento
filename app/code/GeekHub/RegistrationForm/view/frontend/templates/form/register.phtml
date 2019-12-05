@@ -65,29 +65,18 @@
             <?php $_streetValidationClass = $this->helper(\Magento\Customer\Helper\Address::class)->getAttributeValidationClass('street'); ?>
 
             <div class="field street required">
-                <label for="modal_dealer_street_1" class="label"><span><?= /* @noEscape */
-                        $block->getAttributeData()->getFrontendLabel('street') ?></span></label>
+                <label for="street_1" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('street') ?></span></label>
                 <div class="control">
-                    <input type="text" name="street[]"
-                           value="<?= $block->escapeHtmlAttr($block->getFormData()->getStreet(0)) ?>"
-                           title="<?= /* @noEscape */
-                           $block->getAttributeData()->getFrontendLabel('street') ?>" id="modal_dealer_street_1"
-                           class="input-text <?= $block->escapeHtmlAttr($_streetValidationClass) ?>">
+                    <input type="text" name="street[]" value="<?= $block->escapeHtmlAttr($block->getFormData()->getStreet(0)) ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('street') ?>" id="street_1" class="input-text <?= $block->escapeHtmlAttr($_streetValidationClass) ?>">
                     <div class="nested">
                         <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
                         <?php for ($_i = 2, $_n = $this->helper(\Magento\Customer\Helper\Address::class)->getStreetLines(); $_i <= $_n; $_i++) : ?>
                             <div class="field additional">
-                                <label class="label" for="modal_dealer_street_<?= /* @noEscape */
-                                $_i ?>">
+                                <label class="label" for="street_<?= /* @noEscape */ $_i ?>">
                                     <span><?= $block->escapeHtml(__('Address')) ?></span>
                                 </label>
                                 <div class="control">
-                                    <input type="text" name="street[]"
-                                           value="<?= $block->escapeHtml($block->getFormData()->getStreetLine($_i - 1)) ?>"
-                                           title="<?= $block->escapeHtmlAttr(__('Street Address %1', $_i)) ?>"
-                                           id="modal_dealer_street_<?= /* @noEscape */
-                                           $_i ?>"
-                                           class="input-text <?= $block->escapeHtmlAttr($_streetValidationClass) ?>">
+                                    <input type="text" name="street[]" value="<?= $block->escapeHtml($block->getFormData()->getStreetLine($_i - 1)) ?>" title="<?= $block->escapeHtmlAttr(__('Street Address %1', $_i)) ?>" id="street_<?= /* @noEscape */ $_i ?>" class="input-text <?= $block->escapeHtmlAttr($_streetValidationClass) ?>">
                                 </div>
                             </div>
                         <?php endfor; ?>
@@ -96,61 +85,42 @@
             </div>
 
             <div class="field required">
-                <label for="modal_dealer_city" class="label"><span><?= /* @noEscape */
-                        $block->getAttributeData()->getFrontendLabel('city') ?></span></label>
+                <label for="city" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('city') ?></span></label>
                 <div class="control">
-                    <input type="text" name="city"
-                           value="<?= $block->escapeHtmlAttr($block->getFormData()->getCity()) ?>"
-                           title="<?= /* @noEscape */
-                           $block->getAttributeData()->getFrontendLabel('city') ?>"
-                           class="input-text <?= $block->escapeHtmlAttr($this->helper(\Magento\Customer\Helper\Address::class)->getAttributeValidationClass('city')) ?>"
-                           id="modal_dealer_city">
+                    <input type="text" name="city" value="<?= $block->escapeHtmlAttr($block->getFormData()->getCity()) ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('city') ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper(\Magento\Customer\Helper\Address::class)->getAttributeValidationClass('city')) ?>" id="city">
                 </div>
             </div>
 
             <div class="field region required">
-                <label for="modal_dealer_region_id" class="label"><span><?= /* @noEscape */
-                        $block->getAttributeData()->getFrontendLabel('region') ?></span></label>
+                <label for="region_id" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?></span></label>
                 <div class="control">
-                    <select id="modal_dealer_region_id" name="region_id" title="<?= /* @noEscape */
-                    $block->getAttributeData()->getFrontendLabel('region') ?>" class="validate-select region_id"
-                            style="display:none;">
+                    <select id="region_id" name="region_id" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?>" class="validate-select region_id" style="display:none;">
                         <option value=""><?= $block->escapeHtml(__('Please select a region, state or province.')) ?></option>
                     </select>
-                    <input type="text" id="modal_dealer_region" name="region"
-                           value="<?= $block->escapeHtml($block->getRegion()) ?>" title="<?= /* @noEscape */
-                    $block->getAttributeData()->getFrontendLabel('region') ?>"
-                           class="input-text <?= $block->escapeHtmlAttr($this->helper(\Magento\Customer\Helper\Address::class)->getAttributeValidationClass('region')) ?>"
-                           style="display:none;">
+                    <input type="text" id="region" name="region" value="<?= $block->escapeHtml($block->getRegion()) ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper(\Magento\Customer\Helper\Address::class)->getAttributeValidationClass('region')) ?>" style="display:none;">
                 </div>
             </div>
 
             <div class="field zip required">
-                <label for="modal_dealer_zip" class="label"><span><?= /* @noEscape */
-                        $block->getAttributeData()->getFrontendLabel('postcode') ?></span></label>
+                <label for="zip" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('postcode') ?></span></label>
                 <div class="control">
-                    <input type="text" name="postcode"
-                           value="<?= $block->escapeHtmlAttr($block->getFormData()->getPostcode()) ?>"
-                           title="<?= /* @noEscape */
-                           $block->getAttributeData()->getFrontendLabel('postcode') ?>" id="modal_dealer_zip"
-                           class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper(\Magento\Customer\Helper\Address::class)->getAttributeValidationClass('postcode')) ?>">
+                    <input type="text" name="postcode" value="<?= $block->escapeHtmlAttr($block->getFormData()->getPostcode()) ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('postcode') ?>" id="zip" class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper(\Magento\Customer\Helper\Address::class)->getAttributeValidationClass('postcode')) ?>">
                 </div>
             </div>
 
             <div class="field country required">
-                <label for="country" class="label"><span><?= /* @noEscape */
-                        $block->getAttributeData()->getFrontendLabel('country_id') ?></span></label>
+                <label for="country" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('country_id') ?></span></label>
                 <div class="control">
                     <?= $block->getCountryHtmlSelect() ?>
                 </div>
             </div>
-            <?php $addressAttributes = $block->getChildBlock('customer_form_address_user_attributes'); ?>
+            <?php $addressAttributes = $block->getChildBlock('customer_form_address_user_attributes');?>
             <?php if ($addressAttributes) : ?>
                 <?php $addressAttributes->setEntityType('customer_address'); ?>
-                <?php $addressAttributes->setFieldIdFormat('address:%1$s')->setFieldNameFormat('address[%1$s]'); ?>
-                <?php $block->restoreSessionData($addressAttributes->getMetadataForm(), 'address'); ?>
+                <?php $addressAttributes->setFieldIdFormat('address:%1$s')->setFieldNameFormat('address[%1$s]');?>
+                <?php $block->restoreSessionData($addressAttributes->getMetadataForm(), 'address');?>
                 <?= $addressAttributes->setShowContainer(false)->toHtml() ?>
-            <?php endif; ?>
+            <?php endif;?>
             <input type="hidden" name="default_billing" value="1">
             <input type="hidden" name="default_shipping" value="1">
         </fieldset>
@@ -253,10 +223,10 @@
             "regionUpdater": {
                 "optionalRegionAllowed": <?= /* @noEscape */
         $block->getConfig('general/region/display_all') ? 'true' : 'false' ?>,
-                "regionListId": "#modal_dealer_region_id",
-                "regionInputId": "#modal_dealer_region",
-                "postcodeId": "#modal_dealer_zip",
-                "form": "#modal_dealer_form-validate",
+                "regionListId": "#region_id",
+                "regionInputId": "#region",
+                "postcodeId": "#zip",
+                "form": "#form-validate",
                 "regionJson": <?= /* @noEscape */
         $this->helper(\Magento\Directory\Helper\Data::class)->getRegionJson() ?>,
                 "defaultRegion": "<?= (int)$block->getFormData()->getRegionId() ?>",
@@ -276,9 +246,4 @@
             }
         }
     }
-
-
-
-
-
 </script>

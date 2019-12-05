@@ -11,7 +11,11 @@
                 <block class="Magento\Customer\Block\Form\Register"
                        name="registration.for.dealer.form"
                        template="GeekHub_RegistrationForm::form/register.phtml"
-                />
+                >
+                    <action method="setShowAddressFields">
+                        <argument name="show.address.fields" xsi:type="boolean">true</argument>
+                    </action>
+                </block>
             </block>
         </referenceContainer>
     </body>
