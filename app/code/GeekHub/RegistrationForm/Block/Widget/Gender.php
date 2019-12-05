@@ -1,9 +1,6 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-namespace  GeekHub\RegistrationForm\Block\Widget;
+
+namespace GeekHub\RegistrationForm\Block\Widget;
 
 use Magento\Customer\Api\CustomerMetadataInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
@@ -15,7 +12,7 @@ use Magento\Customer\Api\Data\OptionInterface;
  *
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  */
-class Gender extends AbstractWidget
+class Gender extends \Magento\Customer\Block\Widget\AbstractWidget
 {
     /**
      * @var \Magento\Customer\Model\Session
@@ -44,7 +41,8 @@ class Gender extends AbstractWidget
         CustomerRepositoryInterface $customerRepository,
         \Magento\Customer\Model\Session $customerSession,
         array $data = []
-    ) {
+    )
+    {
         $this->_customerSession = $customerSession;
         $this->customerRepository = $customerRepository;
         parent::__construct($context, $addressHelper, $customerMetadata, $data);
@@ -59,7 +57,7 @@ class Gender extends AbstractWidget
     public function _construct()
     {
         parent::_construct();
-        $this->setTemplate('Magento_Customer::widget/gender.phtml');
+        $this->setTemplate('GeekHub_RegistrationForm::widget/gender.phtml');
     }
 
     /**

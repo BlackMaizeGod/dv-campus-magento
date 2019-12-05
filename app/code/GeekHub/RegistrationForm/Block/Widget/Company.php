@@ -1,10 +1,6 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
 
-namespace  GeekHub\RegistrationForm\Block\Widget;
+namespace GeekHub\RegistrationForm\Block\Widget;
 
 use Magento\Customer\Api\AddressMetadataInterface;
 use Magento\Customer\Api\CustomerMetadataInterface;
@@ -21,7 +17,7 @@ use Magento\Framework\View\Element\Template\Context;
  *
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  */
-class Company extends AbstractWidget
+class Company extends \Magento\Customer\Block\Widget\AbstractWidget
 {
 
     /**
@@ -54,7 +50,8 @@ class Company extends AbstractWidget
         Options $options,
         AddressMetadataInterface $addressMetadata,
         array $data = []
-    ) {
+    )
+    {
         $this->options = $options;
         parent::__construct($context, $addressHelper, $customerMetadata, $data);
         $this->addressMetadata = $addressMetadata;
@@ -69,7 +66,7 @@ class Company extends AbstractWidget
         parent::_construct();
 
         // default template location
-        $this->setTemplate('Magento_Customer::widget/company.phtml');
+        $this->setTemplate('GeekHub_RegistrationForm::widget/company.phtml');
     }
 
     /**
@@ -162,8 +159,7 @@ class Company extends AbstractWidget
      */
     public function isEnabled()
     {
-        return $this->_getAttribute(self::ATTRIBUTE_CODE) ? (bool)$this->_getAttribute(self::ATTRIBUTE_CODE)->isVisible(
-        ) : false;
+        return $this->_getAttribute(self::ATTRIBUTE_CODE) ? (bool)$this->_getAttribute(self::ATTRIBUTE_CODE)->isVisible() : false;
     }
 
     /**

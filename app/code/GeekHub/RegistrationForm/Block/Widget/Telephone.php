@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace GeekHub\RegistrationForm\Block\Widget;
 
@@ -21,7 +17,7 @@ use Magento\Framework\View\Element\Template\Context;
  *
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  */
-class Telephone extends AbstractWidget
+class Telephone extends \Magento\Customer\Block\Widget\AbstractWidget
 {
 
     /**
@@ -54,7 +50,8 @@ class Telephone extends AbstractWidget
         Options $options,
         AddressMetadataInterface $addressMetadata,
         array $data = []
-    ) {
+    )
+    {
         $this->options = $options;
         parent::__construct($context, $addressHelper, $customerMetadata, $data);
         $this->addressMetadata = $addressMetadata;
@@ -69,7 +66,7 @@ class Telephone extends AbstractWidget
         parent::_construct();
 
         // default template location
-        $this->setTemplate('Magento_Customer::widget/telephone.phtml');
+        $this->setTemplate('GeekHub_RegistrationForm::widget/telephone.phtml');
     }
 
     /**
@@ -162,8 +159,7 @@ class Telephone extends AbstractWidget
      */
     public function isEnabled()
     {
-        return $this->_getAttribute(self::ATTRIBUTE_CODE) ? (bool)$this->_getAttribute(self::ATTRIBUTE_CODE)->isVisible(
-        ) : false;
+        return $this->_getAttribute(self::ATTRIBUTE_CODE) ? (bool)$this->_getAttribute(self::ATTRIBUTE_CODE)->isVisible() : false;
     }
 
     /**

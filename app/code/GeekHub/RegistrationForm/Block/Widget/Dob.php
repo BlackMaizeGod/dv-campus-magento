@@ -1,8 +1,5 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
+
 namespace GeekHub\RegistrationForm\Block\Widget;
 
 use Magento\Customer\Api\CustomerMetadataInterface;
@@ -13,7 +10,7 @@ use Magento\Framework\Api\ArrayObjectSearch;
  *
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  */
-class Dob extends AbstractWidget
+class Dob extends \Magento\Customer\Block\Widget\AbstractWidget
 {
     /**
      * Constants for borders of date-type customer attributes
@@ -54,7 +51,8 @@ class Dob extends AbstractWidget
         \Magento\Framework\View\Element\Html\Date $dateElement,
         \Magento\Framework\Data\Form\FilterFactory $filterFactory,
         array $data = []
-    ) {
+    )
+    {
         $this->dateElement = $dateElement;
         $this->filterFactory = $filterFactory;
         parent::__construct($context, $addressHelper, $customerMetadata, $data);
@@ -66,7 +64,7 @@ class Dob extends AbstractWidget
     public function _construct()
     {
         parent::_construct();
-        $this->setTemplate('Magento_Customer::widget/dob.phtml');
+        $this->setTemplate('GeekHub_RegistrationForm::widget/dob.phtml');
     }
 
     /**
@@ -202,7 +200,7 @@ class Dob extends AbstractWidget
     {
         $this->dateElement->setData([
             'extra_params' => $this->getHtmlExtraParams(),
-            'name' => $this->getHtmlId(),
+            'name' => 'dob',
             'id' => $this->getHtmlId(),
             'class' => $this->getHtmlClass(),
             'value' => $this->getValue(),
@@ -225,7 +223,7 @@ class Dob extends AbstractWidget
      */
     public function getHtmlId()
     {
-        return 'dob';
+        return 'modal_dealer_dob';
     }
 
     /**

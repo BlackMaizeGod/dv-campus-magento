@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
-    <router id="standard">
-        <route id="geek_hub_registration_form" frontName="dealer-additional-form">
-            <module name="GeekHub_RegistrationForm" />
-        </route>
-    </router>
-</config>

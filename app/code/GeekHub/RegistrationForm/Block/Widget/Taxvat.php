@@ -1,10 +1,6 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
 
-namespace  GeekHub\RegistrationForm\Block\Widget;
+namespace GeekHub\RegistrationForm\Block\Widget;
 
 use Magento\Customer\Api\CustomerMetadataInterface;
 
@@ -13,7 +9,7 @@ use Magento\Customer\Api\CustomerMetadataInterface;
  *
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  */
-class Taxvat extends AbstractWidget
+class Taxvat extends \Magento\Customer\Block\Widget\AbstractWidget
 {
     /**
      * Constructor.
@@ -28,7 +24,8 @@ class Taxvat extends AbstractWidget
         \Magento\Customer\Helper\Address $addressHelper,
         CustomerMetadataInterface $customerMetadata,
         array $data = []
-    ) {
+    )
+    {
         parent::__construct($context, $addressHelper, $customerMetadata, $data);
         $this->_isScopePrivate = true;
     }
@@ -41,7 +38,7 @@ class Taxvat extends AbstractWidget
     public function _construct()
     {
         parent::_construct();
-        $this->setTemplate('Magento_Customer::widget/taxvat.phtml');
+        $this->setTemplate('GeekHub_RegistrationForm::widget/taxvat.phtml');
     }
 
     /**

@@ -1,8 +1,5 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
+
 namespace GeekHub\RegistrationForm\Block\Widget;
 
 use Magento\Customer\Api\AddressMetadataInterface;
@@ -20,7 +17,7 @@ use Magento\Framework\View\Element\Template\Context;
  *
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  */
-class Name extends AbstractWidget
+class Name extends \Magento\Customer\Block\Widget\AbstractWidget
 {
     /**
      * @var AddressMetadataInterface
@@ -47,7 +44,8 @@ class Name extends AbstractWidget
         Options $options,
         AddressMetadataInterface $addressMetadata,
         array $data = []
-    ) {
+    )
+    {
         $this->options = $options;
         parent::__construct($context, $addressHelper, $customerMetadata, $data);
         $this->addressMetadata = $addressMetadata;
@@ -62,7 +60,7 @@ class Name extends AbstractWidget
         parent::_construct();
 
         // default template location
-        $this->setTemplate('Magento_Customer::widget/name.phtml');
+        $this->setTemplate('GeekHub_RegistrationForm::widget/name.phtml');
     }
 
     /**
