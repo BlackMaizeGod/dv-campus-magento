@@ -4,7 +4,7 @@ var config = {
     },
     shim: {
         additionalRegistrationForm: {
-            deps: ['jquery']
+            deps: ['jquery', 'Magento_Ui/js/modal/modal']
         }
     }
 };

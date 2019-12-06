@@ -8,10 +8,16 @@
                    template="GeekHub_RegistrationForm::customer-registration/additional-form.phtml"
                    after="form_fields_before"
             >
-                <block class="Magento\Customer\Block\Form\Register"
+
+                <block class="GeekHub\RegistrationForm\Block\Form\Register"
                        name="registration.for.dealer.form"
                        template="GeekHub_RegistrationForm::form/register.phtml"
                 >
+                    <arguments>
+                        <argument name="attribute_data" xsi:type="object">
+                            Magento\Customer\Block\DataProviders\AddressAttributeData
+                        </argument>
+                    </arguments>
                     <action method="setShowAddressFields">
                         <argument name="show.address.fields" xsi:type="boolean">true</argument>
                     </action>
