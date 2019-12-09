@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a58e7a23469082c11e4d6766f6b9eb5",
+    "content-hash": "e0c15bf2d0a077e1490e5816c7d5f556",
     "packages": [
         {
             "name": "amzn/amazon-pay-and-login-magento-2-module",
@@ -873,6 +873,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -17681,33 +17682,42 @@
         },
         {
             "name": "magento/magento-coding-standard",
-            "version": "3",
+            "version": "5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/magento/magento-coding-standard.git",
-                "reference": "73a7b7f3c00b02242f45f706571430735586f608"
+                "reference": "da46c5d57a43c950dfa364edc7f1f0436d5353a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/magento/magento-coding-standard/zipball/73a7b7f3c00b02242f45f706571430735586f608",
-                "reference": "73a7b7f3c00b02242f45f706571430735586f608",
+                "url": "https://api.github.com/repos/magento/magento-coding-standard/zipball/da46c5d57a43c950dfa364edc7f1f0436d5353a5",
+                "reference": "da46c5d57a43c950dfa364edc7f1f0436d5353a5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6.0",
-                "squizlabs/php_codesniffer": "^3.4"
+                "squizlabs/php_codesniffer": "^3.4",
+                "webonyx/graphql-php": ">=0.12.6 <1.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
             "type": "phpcodesniffer-standard",
+            "autoload": {
+                "classmap": [
+                    "PHP_CodeSniffer/Tokenizers/"
+                ],
+                "psr-4": {
+                    "Magento2\\": "Magento2/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "OSL-3.0",
                 "AFL-3.0"
             ],
             "description": "A set of Magento specific PHP CodeSniffer rules.",
-            "time": "2019-06-18T21:01:42+00:00"
+            "time": "2019-11-04T22:08:27+00:00"
         },
         {
             "name": "magento/magento2-functional-testing-framework",
@@ -20484,6 +20494,8 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-json": "*"
+    },
     "platform-dev": []
 }

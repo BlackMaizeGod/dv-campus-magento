@@ -115,5 +115,9 @@
         "enforceExistence": "exceptExports",
         "requireHyphenBeforeDescription": true,
         "requireParamTypes": true
-    }
+    },
+  "excludeFiles": [
+    "../../../../../../../../../app/code/GeekHub/AskQuestion/view/frontend/web/js/submit-question.js",
+    "../../../../../../../../../app/code/GeekHub/RegistrationForm/view/frontend/web/js/additional-registration-form.js"
+  ]
 }

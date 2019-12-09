@@ -1,35 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GeekHub\RegistrationForm\Block\Widget;
 
-use Magento\Customer\Api\CustomerMetadataInterface;
-
 /**
- * Customer Value Added Tax Widget
+ * This class extend vendor class
  *
- * @SuppressWarnings(PHPMD.DepthOfInheritance)
+ * @inheritDoc
  */
-class Taxvat extends \Magento\Customer\Block\Widget\AbstractWidget
+class Taxvat extends \Magento\Customer\Block\Widget\Taxvat
 {
-    /**
-     * Constructor.
-     *
-     * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Magento\Customer\Helper\Address $addressHelper
-     * @param CustomerMetadataInterface $customerMetadata
-     * @param array $data
-     */
-    public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Customer\Helper\Address $addressHelper,
-        CustomerMetadataInterface $customerMetadata,
-        array $data = []
-    )
-    {
-        parent::__construct($context, $addressHelper, $customerMetadata, $data);
-        $this->_isScopePrivate = true;
-    }
-
     /**
      * Sets the template
      *
@@ -37,40 +18,9 @@ class Taxvat extends \Magento\Customer\Block\Widget\AbstractWidget
      */
     public function _construct()
     {
-        parent::_construct();
+        \Magento\Customer\Block\Widget\AbstractWidget::_construct();
+
+        // default template location
         $this->setTemplate('GeekHub_RegistrationForm::widget/taxvat.phtml');
-    }
-
-    /**
-     * Get is enabled.
-     *
-     * @return bool
-     */
-    public function isEnabled()
-    {
-        return $this->_getAttribute('taxvat') ? (bool)$this->_getAttribute('taxvat')->isVisible() : false;
-    }
-
-    /**
-     * Get is required.
-     *
-     * @return bool
-     */
-    public function isRequired()
-    {
-        return $this->_getAttribute('taxvat') ? (bool)$this->_getAttribute('taxvat')->isRequired() : false;
-    }
-
-    /**
-     * Retrieve store attribute label
-     *
-     * @param string $attributeCode
-     *
-     * @return string
-     */
-    public function getStoreLabel($attributeCode)
-    {
-        $attribute = $this->_getAttribute($attributeCode);
-        return $attribute ? __($attribute->getStoreLabel()) : '';
     }
 }

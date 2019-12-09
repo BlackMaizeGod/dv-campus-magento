@@ -9,8 +9,8 @@ define(
     ) {
         "use strict";
 
-        return function (config, element) {
-            const options = {
+        return function () {
+            var options = {
                 type: 'popup',
                 responsive: true,
                 innerScroll: true,
@@ -24,10 +24,13 @@ define(
                 }]
             };
 
-            let popup = modal(options, $("#header-registration-modal"));
-            $(".registration-for-dealer-wrapper").on('click', function () {
-                $("#header-registration-modal").modal("openModal");
-            });
-        }
+            var popup = modal(options, $('#header-registration-modal'));
+
+            $('.registration-for-dealer-wrapper').on(
+                'click', function () {
+                    $('#header-registration-modal').modal('openModal');
+                }
+            );
+        };
     }
 );

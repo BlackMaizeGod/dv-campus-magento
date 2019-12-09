@@ -7,12 +7,7 @@
         </span>
     </label>
     <div class="control">
-        <?php
-        $_validationClass = $block->escapeHtmlAttr(
-            $this->helper(\Magento\Customer\Helper\Address::class)
-                ->getAttributeValidationClass('telephone')
-        );
-        ?>
+        <?php $_validationClass = $block->escapeHtmlAttr($this->helper(\Magento\Customer\Helper\Address::class)->getAttributeValidationClass('telephone')); ?>
         <input type="text"
                name="telephone"
                id="modal_dealer_telephone"

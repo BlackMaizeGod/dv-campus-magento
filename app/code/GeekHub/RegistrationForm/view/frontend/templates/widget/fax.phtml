@@ -8,10 +8,7 @@
     </label>
     <div class="control">
         <?php
-        $_validationClass = $block->escapeHtmlAttr(
-            $this->helper(\Magento\Customer\Helper\Address::class)
-                ->getAttributeValidationClass('fax')
-        );
+        $_validationClass = $block->escapeHtmlAttr($this->helper(\Magento\Customer\Helper\Address::class)->getAttributeValidationClass('fax'));
         ?>
         <input type="text"
                name="fax"
