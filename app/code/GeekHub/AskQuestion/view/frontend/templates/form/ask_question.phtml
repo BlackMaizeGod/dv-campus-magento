@@ -1,48 +1,66 @@
 <?php /** @var \GeekHub\AskQuestion\Block\Form\AskQuestion $block */ ?>
 
-<form action="javascript:void(0)" id="ask_question_form" class="review-form" onsubmit="return false"
-      data-mage-init='{"submitQuestion": {}}'>
+<form action="<?= $block->escapeUrl($block->getUrl('ask_question/submit')) ?>"
+      id="ask_question_form"
+      class="review-form"
+      data-mage-init='{"submitQuestion": {}}'
+      onsubmit="return false"
+>
     <fieldset class="fieldset review-fieldset">
         <div class="field required">
             <label class="label" for="ask_question_name"><span><?= $block->escapeHtml(__('Name')) ?></span></label>
-            <input type="text"
-                   name="name"
-                   id="ask_question_name"
-                   placeholder="<?= $block->escapeHtml(__('Enter name')) ?>"
-                   data-validate="{required:true}"
-            >
+            <div class="control">
+                <input title="<?= $block->escapeHtml(__('Name')) ?>"
+                       type="text"
+                       name="name"
+                       id="ask_question_name"
+                       placeholder="<?= $block->escapeHtml(__('Enter name')) ?>"
+                       data-validate="{required:true}"
+                >
+            </div>
         </div>
         <div class="field required">
             <label class="label" for="ask_question_email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
-            <input type="email"
-                   name="email"
-                   id="ask_question_email"
-                   placeholder="<?= $block->escapeHtml(__('Enter email')) ?>"
-                   data-validate="{required:true, 'validate-email':true}"
-            >
+            <div class="control">
+                <input title="<?= $block->escapeHtml(__('Email')) ?>"
+                       type="email"
+                       name="email"
+                       id="ask_question_email"
+                       placeholder="<?= $block->escapeHtml(__('Enter email')) ?>"
+                       data-validate="{required:true, 'validate-email':true}"
+                >
+            </div>
         </div>
-        <div class="field">
+        <div class="field required">
             <label class="label"
                    for="ask_question_number"><span><?= $block->escapeHtml(__('Phone number')) ?></span></label>
-            <input type="number"
-                   name="phone_number"
-                   id="ask_question_number"
-                   placeholder="<?= $block->escapeHtml(__('Enter phone number')) ?>"
-            >
+            <div class="control">
+                <input title="<?= $block->escapeHtml(__('Phone number')) ?>"
+                       type="tel"
+                       minlength="10"
+                       name="phone_number"
+                       id="ask_question_number"
+                       placeholder="<?= $block->escapeHtml(__('+380xxxxxxxxx')) ?>"
+                       data-validate="{required:true, 'validate-ua-phone':true}"
+                >
+            </div>
         </div>
         <div class="field required">
             <label class="label" for="ask_question_textarea">
                 <span><?= $block->escapeHtml(__('Question')) ?></span>
             </label>
-            <textarea name="question"
-                      form="ask_question_form"
-                      id="ask_question_textarea"
-                      maxlength="127"
-                      rows="10"
-                      cols="50"
-                      placeholder="<?= $block->escapeHtml(__('Enter your question')) ?>"
-                      data-validate="{required:true}"
-            ></textarea>
+            <div class="control">
+                <textarea title="<?= $block->escapeHtml(__('Question')) ?>"
+                          name="question"
+                          form="ask_question_form"
+                          id="ask_question_textarea"
+                          maxlength="127"
+                          rows="10"
+                          cols="50"
+                          placeholder="<?= $block->escapeHtml(__('Enter your question')) ?>"
+                          data-validate="{required:true}"
+                ></textarea>
+            </div>
         </div>
         <div class="actions-toolbar">
             <div class="primary actions-primary">
