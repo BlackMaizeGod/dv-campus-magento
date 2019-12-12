@@ -13,8 +13,8 @@ define(
             'geekhub.submitQuestion', {
 
                 options: {
-                    cookieName: 'last_submit_time',
-                    cookieLiveTime: 120
+                    cookieName: 'ban_on_sending',
+                    cookieLifeTime: 120
                 },
 
                 /**
@@ -22,7 +22,6 @@ define(
                  * @private
                  */
                 _create: function () {
-                    this.clearCookie();
                     $(this.element).submit(this.submit.bind(this));
                 },
 
@@ -41,11 +40,11 @@ define(
                         validationAlert();
                         return;
                     }
-                    if (!this.isValidCookieLiveTime()) {
+                    if ($.mage.cookies.get(this.options.cookieName)) {
                         alert({
                             title: 'Error',
                             // eslint-disable-next-line max-len
-                            content: 'You cannot send question now, please wait: ' + (this.options.cookieLiveTime-this.getTimeDifference()).toFixed() + ' seconds'
+                            content: 'You cannot send question now, please wait: ' + (this.options.cookieLifeTime - this.getTimeDifference()).toFixed() + ' seconds'
                         });
                         return;
                     }
@@ -84,7 +83,6 @@ define(
                                 alert(
                                     {
                                         title: $.mage.__('Error'),
-                                        // eslint-disable-next-line max-len
                                         content: $.mage.__(errorMessage.responseText)
                                     }
                                 );
@@ -109,27 +107,11 @@ define(
                 },
 
                 /**
-                 * Check value last_submit_time cookie and current unix time
-                 */
-                isValidCookieLiveTime: function () {
-                    if($.mage.cookies.get(this.options.cookieName)){
-                        return this.getTimeDifference() >= this.options.cookieLiveTime;
-                    }
-                    return true;
-                },
-
-                /**
                  * set cookies
                  */
                 setTimeCookie: function () {
-                    $.mage.cookies.set(this.options.cookieName, this.getUnixTime());
-                },
-
-                /**
-                 * Clear cookie
-                 */
-                clearCookie: function () {
-                    $.mage.cookies.clear(this.options.cookieName);
+                    // eslint-disable-next-line max-len
+                    $.mage.cookies.set(this.options.cookieName, this.getUnixTime(), {lifetime: this.options.cookieLifeTime});
                 }
             }
         );
