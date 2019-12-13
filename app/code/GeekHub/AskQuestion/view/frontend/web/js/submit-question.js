@@ -9,6 +9,8 @@ define(
     ], function ($, validationAlert, alert) {
         'use strict';
 
+        //TODO Remove cookie when customer logout
+
         $.widget(
             'geekhub.submitQuestion', {
 
