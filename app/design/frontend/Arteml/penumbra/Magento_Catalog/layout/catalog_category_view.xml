@@ -4,8 +4,8 @@
     <body>
         <referenceContainer name="content">
             <block name="product.info.knockout"
-                   class="GeekHub\AskQuestion\Block\KnockOut\KnockOut"
-                   template="GeekHub_AskQuestion::knockout/knockout.phtml"
+                   class="Magento\Framework\View\Element\Template"
+                   template="Magento_Catalog::knockout/knockout.phtml"
                    before="category.products"
             />
         </referenceContainer>
