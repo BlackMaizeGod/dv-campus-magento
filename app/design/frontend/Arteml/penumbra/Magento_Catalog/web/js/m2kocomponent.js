@@ -1,4 +1,4 @@
-define(['jquery', 'uiComponent', 'ko', 'Magento_Catalog/js/model/rgb-model'], function ($, Component, ko, rgbModel) {
+define(['jquery', 'uiComponent', 'ko', 'rgbModel'], function ($, Component, ko, rgbModel) {
     'use strict';
 
     var self;

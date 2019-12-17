@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="geekhub_cms_link_to_page" class="LohvynenkoAA\CustomWidget\Block\Widget\Link">
+        <label translate="true">Link to page</label>
+        <description>Link to page</description>
+        <parameters>
+            <parameter name="path_to_page" xsi:type="text" visible="true" sort_order="10" >
+                <label translate="true">Path to page</label>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="banner_home_page" class="LohvynenkoAA\CustomWidget\Block\Widget\Banner">
+        <label translate="true">Show Banner</label>
+        <description>Widget which show banner</description>
+    </widget>
+</widgets>

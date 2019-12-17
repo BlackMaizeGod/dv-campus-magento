@@ -135,6 +135,9 @@
     SetEnvIf Host .*artem-lohvynenko-additional-website.local.* MAGE_RUN_CODE=additional_website
     SetEnvIf Host .*artem-lohvynenko-additional-website.local.* MAGE_RUN_TYPE=website
 
+    SetEnvIf Host .*artem-lohvynenko-geekhub.local.* MAGE_RUN_CODE=geek_hub_additional
+    SetEnvIf Host .*artem-lohvynenko-geekhub.local.* MAGE_RUN_TYPE=website
+
 ############################################
 ## You can put here your magento root folder
 ## path relative to web root
