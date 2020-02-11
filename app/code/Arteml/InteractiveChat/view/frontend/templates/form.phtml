@@ -1,0 +1,48 @@
+<?php /** @var \Magento\Framework\View\Element\Template $block */ ?>
+<div class="wrapper-for-chat-window"  id="wrapper-for-chat-window" style="display: none" >
+    <form class="form"
+          action="javascript:void(0);"
+          id="dv-campus-customer-preferences-form"
+          method="post"
+          data-mage-init='{"arteml_interactiveChat_chatForm": {}}'
+    >
+        <div class="header-chat-form">
+            <p><i class="fas fa-user-cog"></i> operator</p>
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="wrapper-for-chat-form-fields">
+            <fieldset class="fieldset">
+                <div class="chat-history">
+                    <p class="operator-message">i`m operator</p>
+                    <p class="user-message">i`am user</p>
+                </div>
+            </fieldset>
+            <fieldset class="fieldset">
+                <div class="field required">
+                    <label class="label" for="chat-message-field"><span><?= $block->escapeHtml(__('Message to administrator')) ?></span></label>
+                    <div class="control">
+                        <textarea class="chat-messages"
+                                  name="message"
+                                  id="chat-message-field"
+                                  cols="30"
+                                  rows="5"
+                                  autofocus
+                                  maxlength="255"
+                                  placeholder="<?= $block->escapeHtmlAttr(__('Input ur message here')) ?>"
+                                  data-validate='{"required":true}'
+                        ></textarea>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <input type="hidden" name="form_key" value="<?= /* @noEscape */ $block->getFormKey() ?>" />
+        <div class="actions-toolbar">
+            <div class="primary">
+                <input type="hidden" name="hideit" id="hideit" value=""/>
+                <button type="submit" title="<?= $block->escapeHtmlAttr(__('Save')) ?>" class="action submit primary">
+                    <span><?= $block->escapeHtml(__('Save')) ?></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

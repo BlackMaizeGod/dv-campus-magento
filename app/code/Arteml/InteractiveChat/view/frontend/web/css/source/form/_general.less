@@ -1,0 +1,78 @@
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .wrapper-for-chat-window {
+        border: 1px solid @color-dark-blue;
+        border-radius: 0.25rem;
+        padding: 10px;
+        width: 80%;
+        max-width: 400px;
+        margin: 0 auto;
+
+        fieldset {
+            margin-bottom: 10px;
+        }
+
+        .header-chat-form {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+            background: @color-dark-blue;
+            color: @color-white;
+            padding: 10px 10px 0;
+
+            //p {
+            //    i {
+            //        margin-right: 10px;
+            //    }
+            //}
+
+            .icon-headphones {
+                margin: 0 5px 0 0;
+            }
+        }
+
+        .chat-history {
+            display: flex;
+            flex-direction: column;
+            height: 350px;
+            border: 1px solid @color-gray46;
+            border-bottom-right-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+
+            .operator-message {
+                background: @color-info__bootstrap;
+                align-self: flex-start;
+                margin-left: 10px;
+            }
+
+            .user-message {
+                margin-right: 10px;
+                background: @color-success;
+                align-self: flex-end;
+            }
+
+            .operator-message,
+            .user-message {
+                margin-top: 10px;
+                color: @color-white;
+                max-width: 48%;
+                word-break: break-word;
+                padding: 5px 10px 5px 10px;
+                border-radius: 0.25rem;
+            }
+
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xs) {
+    .wrapper-for-chat-window {
+        font-size: 14px;
+        .header-chat-form {
+            > .icon-headphones {
+                font-size: 18px;
+            }
+        }
+    }
+}

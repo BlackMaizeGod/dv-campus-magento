@@ -1,0 +1,45 @@
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .open-interactive-chat {
+        font-size: 22px;
+        color: @color-gray46;
+        position: absolute;
+        right: 80px;
+        margin-top: 8px;
+
+        &:hover,
+        &:active {
+            color: @color-blue1;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .open-interactive-chat {
+        font-size: 46px;
+        position: fixed;
+        right: 30px;
+        bottom: 300px;
+        z-index: 2;
+        border: 1px solid;
+        border-radius: 65%;
+        background: @color-blue1;
+        padding: 20px 10px 20px;
+        color: @color-white;
+
+        &:hover {
+            color: @color-blue1;
+        }
+
+        &:hover .icon-headphones:before {
+            color: @color-white;
+            animation: fast_rotation 1s infinite ease-in-out;
+        }
+
+        .icon-headphones:before {
+            display: block;
+            content: '\e800';
+            font-family: @font-family-name__fontello;
+            animation: rotation 10s 2s infinite ease-in-out;
+        }
+    }
+}
