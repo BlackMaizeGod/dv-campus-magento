@@ -1,24 +1,22 @@
 define([
     'jquery',
-    'Magento_Ui/js/modal/modal',
     'Magento_Ui/js/modal/alert',
 
-], function ($, modal) {
+], function ($) {
     'use strict';
 
     $.widget('artemlInteractiveChat.form', {
         options: {
-            formWrapperId: '#wrapper-for-chat-window'
+            formWrapperId: '#wrapper-for-chat-window',
+            closeButtonId: '#close-btn'
         },
+
         /**
          * @private
          */
         _create: function () {
-            this.form = $(this.element).modal({
-                buttons: []
-            });
-
-            $(document).on('arteml_interactiveChat_showForm.arteml_interactiveChat', () => this.showForm());
+            $(document).on('arteml_interactiveChat_showForm.arteml_interactiveChat', this.showForm.bind(this));
+            $(this.options.closeButtonId).on('click', this.hideForm.bind(this));
         },
 
         /**
@@ -26,6 +24,7 @@ define([
          */
         _destroy: function () {
             $(document).off('arteml_interactiveChat_showForm.arteml_interactiveChat');
+            $(this.options.closeButtonId).off('click');
         },
 
         /**
@@ -39,16 +38,16 @@ define([
          * Show form
          */
         showForm: function () {
-            console.log('show modal');
-            this.form.modal('openModal');
+            this.element
+                .css('transform','translate(0, 0)');
         },
 
         /**
          * Hide Form
          */
         hideForm: function () {
-            this.modal.closeModal();
-            this.modal.destroy();
+            this.element
+                .css('transform','translate(200%, 0)');
         }
     });
 

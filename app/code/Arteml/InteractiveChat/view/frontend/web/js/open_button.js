@@ -11,7 +11,7 @@ define([
          * @private
          */
         _create: function () {
-            $(this.element).on('click.arteml_interactiveChat', () => this.openModal());
+            $(this.element).on('click.arteml_interactiveChat', this.openModal.bind(this));
         },
 
         /**
