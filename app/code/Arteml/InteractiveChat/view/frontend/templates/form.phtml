@@ -1,14 +1,22 @@
 <?php /** @var \Magento\Framework\View\Element\Template $block */ ?>
-<div class="wrapper-for-chat-window"  id="wrapper-for-chat-window" style="display: none" >
-    <form class="form"
-          action="javascript:void(0);"
-          id="dv-campus-customer-preferences-form"
+<div class="wrapper-for-chat-window"
+     id="wrapper-for-chat-window"
+     style="transform: translate(200%, 0)"
+     data-mage-init='{"arteml_interactiveChat_chatForm": {}}'
+>
+    <form action="javascript:void(0);"
+          id="chat-form"
+          class="chat-form"
           method="post"
-          data-mage-init='{"arteml_interactiveChat_chatForm": {}}'
     >
         <div class="header-chat-form">
-            <p><i class="fas fa-user-cog"></i> operator</p>
-            <i class="fas fa-times"></i>
+            <span class="operator-icon">
+                <span class="icon-user"></span>
+                <span>operator</span>
+            </span>
+            <div class="close-btn" id="close-btn">
+                <span class="icon-cancel"></span>
+            </div>
         </div>
         <div class="wrapper-for-chat-form-fields">
             <fieldset class="fieldset">
@@ -18,14 +26,15 @@
                 </div>
             </fieldset>
             <fieldset class="fieldset">
-                <div class="field required">
-                    <label class="label" for="chat-message-field"><span><?= $block->escapeHtml(__('Message to administrator')) ?></span></label>
+                <div class="field required user-text-area">
+                    <label class="label"
+                           for="chat-message-field"><span><?= $block->escapeHtml(__('Message to administrator')) ?></span></label>
                     <div class="control">
                         <textarea class="chat-messages"
                                   name="message"
                                   id="chat-message-field"
                                   cols="30"
-                                  rows="5"
+                                  rows="10"
                                   autofocus
                                   maxlength="255"
                                   placeholder="<?= $block->escapeHtmlAttr(__('Input ur message here')) ?>"
@@ -35,7 +44,8 @@
                 </div>
             </fieldset>
         </div>
-        <input type="hidden" name="form_key" value="<?= /* @noEscape */ $block->getFormKey() ?>" />
+        <input type="hidden" name="form_key" value="<?= /* @noEscape */
+        $block->getFormKey() ?>"/>
         <div class="actions-toolbar">
             <div class="primary">
                 <input type="hidden" name="hideit" id="hideit" value=""/>

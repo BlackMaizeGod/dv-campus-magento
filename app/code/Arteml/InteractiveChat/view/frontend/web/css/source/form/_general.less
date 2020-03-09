@@ -1,14 +1,25 @@
-.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+& when (@media-common = true) {
     .wrapper-for-chat-window {
-        border: 1px solid @color-dark-blue;
-        border-radius: 0.25rem;
-        padding: 10px;
-        width: 80%;
+        margin: 0;
+        font-size: 14px;
+        position: fixed;
+        z-index: 14;
+        border: 2px solid @color-dark-blue;
+        background: @color-white;
+        border-right: none;
+        border-radius: 5px;
+        right: 0;
+        top: 20px;
+        width: 100%;
         max-width: 400px;
-        margin: 0 auto;
+        transition: transform .7s ease;
+
+        .chat-form {
+            padding-bottom: 40px;
+        }
 
         fieldset {
-            margin-bottom: 10px;
+            margin-bottom: 40px;
         }
 
         .header-chat-form {
@@ -19,16 +30,18 @@
             border-top-right-radius: 0.25rem;
             background: @color-dark-blue;
             color: @color-white;
-            padding: 10px 10px 0;
+            padding: 10px;
 
-            //p {
-            //    i {
-            //        margin-right: 10px;
-            //    }
-            //}
+            .operator-icon {
+                display: flex;
+            }
 
-            .icon-headphones {
-                margin: 0 5px 0 0;
+            .close-btn {
+                color: @color-red9;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
 
@@ -36,9 +49,7 @@
             display: flex;
             flex-direction: column;
             height: 350px;
-            border: 1px solid @color-gray46;
-            border-bottom-right-radius: 0.25rem;
-            border-bottom-left-radius: 0.25rem;
+            border-bottom: 2px solid @color-dark-blue;
 
             .operator-message {
                 background: @color-info__bootstrap;
@@ -61,18 +72,64 @@
                 padding: 5px 10px 5px 10px;
                 border-radius: 0.25rem;
             }
+        }
 
+        .user-text-area {
+            margin: auto;
+            box-sizing: border-box;
+
+            & > label {
+                padding-left: 20px;
+            }
+
+            & > div {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+
+        .actions-toolbar {
+            display: flex;
+            justify-content: center;
+
+            & > .primary {
+                max-width: 200px;
+                width: 100%;
+            }
         }
     }
 }
 
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xs) {
-    .wrapper-for-chat-window {
-        font-size: 14px;
-        .header-chat-form {
-            > .icon-headphones {
-                font-size: 18px;
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    div.wrapper-for-chat-window {
+        width: 90%;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    div.wrapper-for-chat-window {
+        top: unset;
+        bottom: 0;
+        border-bottom: none;
+
+        .actions-toolbar > .primary {
+            max-width: 300px;
+            width: 100%;
+
+            .action.submit.primary {
+                width: 100%;
             }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    div.wrapper-for-chat-window {
+        font-size: 16px;
+
+        .action.submit.primary,
+        textarea {
+            font-size: 16px;
         }
     }
 }
