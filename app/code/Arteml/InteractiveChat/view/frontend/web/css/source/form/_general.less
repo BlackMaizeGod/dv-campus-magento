@@ -48,6 +48,7 @@
         .chat-history {
             display: flex;
             flex-direction: column;
+            overflow-y: scroll;
             height: 350px;
             border-bottom: 2px solid @color-dark-blue;
 
@@ -65,12 +66,21 @@
 
             .operator-message,
             .user-message {
-                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+                margin-top: 5px;
+                margin-bottom: 5px;
                 color: @color-white;
                 max-width: 48%;
                 word-break: break-word;
                 padding: 5px 10px 5px 10px;
                 border-radius: 0.25rem;
+            }
+
+            .chat-time {
+                color: @color-black;
+                font-size: 12px;
+                align-self: flex-end;
             }
         }
 
@@ -95,6 +105,13 @@
             & > .primary {
                 max-width: 200px;
                 width: 100%;
+
+                .action.submit.primary {
+                    &:focus,
+                    &:active {
+                        background: @color-blue1;
+                    }
+                }
             }
         }
     }

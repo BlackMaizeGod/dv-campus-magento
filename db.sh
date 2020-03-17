@@ -1,5 +1,22 @@
 #!/bin/bash
 
+getColumnStatistics()
+{
+  read -r -p "--column-statistics=1/0 " column_statistics
+
+    case $column_statistics in
+      0)
+        column_statistics='--column-statistics=0'
+        ;;
+      1)
+        column_statistics='--column-statistics=1'
+        ;;
+      *)
+        getColumnStatistics
+        ;;
+    esac
+}
+
 read -r -p "Enter db version: " db_version
 
 case $db_version in
@@ -24,13 +41,15 @@ case $case in
     read -r -p "Enter user name: " user
     read -r -p "Enter user password: " password
 
+    getColumnStatistics
+
     if [ "$user" = '' ] & [ "$password" = '' ]
     then
       password=$db_name
       user=$db_name
     fi
 
-    mysqldump -u"$user" -p"$password" -h 127.0.0.1 --port=$port "$db_name" | gzip > var/db.sql.gz
+    mysqldump "$column_statistics" -u"$user" -p"$password" -h 127.0.0.1 --port=$port "$db_name" | gzip > var/db.sql.gz
     ;;
   2|unpack)
     dir="$PWD/$DIRECTORY"

@@ -1,2 +1,6 @@
 "Input ur message here","Input ur message here"
 "Message to administrator","Message to administrator"
+"Your question has been sent to the administrator successfully","Your question has been sent to the administrator successfully"
+"Something went wrong. Probably you were away for quite a long time already. Please, reload the page and try again.","Something went wrong. Probably you were away for quite a long time already. Please, reload the page and try again."
+"Message length could not be less than 10 characters","Message length could not be less than 10 characters"
+"Message length could not be more than 255 characters","Message length could not be more than 255 characters"
