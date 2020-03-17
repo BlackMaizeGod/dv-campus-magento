@@ -15,10 +15,18 @@ define([
         },
 
         /**
+         * Destroy widget
+         */
+        _destroy: function () {
+            $(this.element).off('click.arteml_interactiveChat');
+        },
+
+
+        /**
          * Open Modal
          */
         openModal: function () {
-            $(document).trigger('arteml_interactiveChat_showForm');
+            $(document).trigger('arteml_interactiveChat_showForm.arteml_interactiveChat');
         }
     });
 

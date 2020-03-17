@@ -20,7 +20,7 @@
         </div>
         <div class="wrapper-for-chat-form-fields">
             <fieldset class="fieldset">
-                <div class="chat-history">
+                <div class="chat-history" id="chat-history">
                     <p class="operator-message">i`m operator</p>
                     <p class="user-message">i`am user</p>
                 </div>
@@ -38,14 +38,12 @@
                                   autofocus
                                   maxlength="255"
                                   placeholder="<?= $block->escapeHtmlAttr(__('Input ur message here')) ?>"
-                                  data-validate='{"required":true}'
+                                  data-validate='{"required":true, "minlength":10, "maxlength": 255}'
                         ></textarea>
                     </div>
                 </div>
             </fieldset>
         </div>
-        <input type="hidden" name="form_key" value="<?= /* @noEscape */
-        $block->getFormKey() ?>"/>
         <div class="actions-toolbar">
             <div class="primary">
                 <input type="hidden" name="hideit" id="hideit" value=""/>
