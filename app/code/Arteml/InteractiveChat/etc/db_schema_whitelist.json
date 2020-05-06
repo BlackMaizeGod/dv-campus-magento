@@ -17,8 +17,7 @@
         },
         "constraint": {
             "PRIMARY": true,
-            "DV_INTERACTIVE_CHAT_REPORT_WS_ID_STORE_WS_WS_ID": true,
-            "DV_INTERACTIVE_CHAT_REPORT_MESSAGE_ID_AUTHOR_ID_WEBSITE_ID": true
+            "DV_INTERACTIVE_CHAT_REPORT_WS_ID_STORE_WS_WS_ID": true
         }
     }
 }

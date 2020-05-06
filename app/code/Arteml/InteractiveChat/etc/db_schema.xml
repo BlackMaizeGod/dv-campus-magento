@@ -10,7 +10,7 @@
         <column xsi:type="varchar" name="author_type" length="9" nullable="false"
                 comment="Author type will be either customer or admin"
         />
-        <column xsi:type="int" name="author_id" padding="7" unsigned="true" nullable="false"
+        <column xsi:type="int" name="author_id" padding="10" unsigned="true" nullable="false"
                 comment="Author ID"
         />
         <column xsi:type="varchar" name="author_name" nullable="false" length="127"
@@ -22,7 +22,7 @@
         <column xsi:type="smallint" name="website_id" padding="5" unsigned="true" nullable="false"
                 comment="Website ID"
         />
-        <column xsi:type="varchar" name="chat_hash" nullable="false" length="64"
+        <column xsi:type="varchar" name="chat_hash" nullable="false" length="63"
                 comment="Chat Hash"
         />
         <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
@@ -55,13 +55,6 @@
                     referenceColumn="website_id"
                     onDelete="NO ACTION"
         />
-        <constraint xsi:type="unique"
-                    referenceId="DV_INTERACTIVE_CHAT_MS_ID_AH_ID_WS_ID"
-        >
-            <column name="message_id"/>
-            <column name="author_id"/>
-            <column name="website_id"/>
-        </constraint>
         <!-- END: Constraints Section -->
     </table>
 </schema>
