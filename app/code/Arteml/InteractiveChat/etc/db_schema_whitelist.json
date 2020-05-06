@@ -1,0 +1,23 @@
+{
+    "dv_interactive_chat_report": {
+        "column": {
+            "message_id": true,
+            "author_type": true,
+            "author_id": true,
+            "author_name": true,
+            "message": true,
+            "website_id": true,
+            "chat_hash": true,
+            "created_at": true
+        },
+        "index": {
+            "DV_INTERACTIVE_CHAT_REPORT_AUTHOR_ID": true,
+            "DV_INTERACTIVE_CHAT_REPORT_WEBSITE_ID": true,
+            "DV_INTERACTIVE_CHAT_REPORT_AUTHOR_ID_CREATED_AT": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "DV_INTERACTIVE_CHAT_REPORT_WS_ID_STORE_WS_WS_ID": true
+        }
+    }
+}
