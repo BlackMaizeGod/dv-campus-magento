@@ -239,6 +239,7 @@ return [
         'Amazon_Payment' => 1,
         'Arteml_Cms' => 1,
         'Arteml_ControllerDemo' => 1,
+        'Arteml_InteractiveChat' => 1,
         'Dotdigitalgroup_Email' => 1,
         'GeekHub_AskQuestion' => 1,
         'GeekHub_RegistrationForm' => 1,
