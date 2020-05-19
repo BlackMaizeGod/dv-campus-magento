@@ -2,7 +2,7 @@ define([
     'jquery',
     'mage/url',
     'Magento_Ui/js/modal/alert',
-    "mage/cookies"
+    'jquery/ui'
 ], function ($, url, alert) {
     'use strict';
 
@@ -14,7 +14,7 @@ define([
             messageAreaId: '#chat-message-field',
             chatHistoryDivId: '#chat-history',
             openButtonWrapperElementClass: '.open-interactive-chat',
-            customControllerUrl: url.build('ajax-interactive-chat/interactiveChat'),
+            customControllerUrl: url.build('ajax-interactive-chat/interactiveChat')
         },
 
         /**
@@ -34,7 +34,7 @@ define([
             $(document).off('arteml_interactiveChat_showForm.arteml_interactiveChat');
             $(this.options.closeButtonId).off('click.arteml_interactiveChat');
             $(this.options.formId).off('submit');
-            $(this.options.chatHistoryDivId).html('');
+            $(document).trigger('arteml_interactiveChat_clearMessageArea.arteml_interactiveChat');
             $(this.options.messageAreaId).attr('value', '');
         },
 
@@ -59,7 +59,6 @@ define([
 
             formData.append('form_key', $.mage.cookies.get('form_key'));
             formData.append('isAjax', 1);
-
 
             $.ajax(
                 {
@@ -98,7 +97,7 @@ define([
          */
         appendMessageToChat: function (message) {
             var today = new Date();
-            var time = today.getHours() + ":" + today.getMinutes();
+            var time = today.getHours() + ':' + today.getMinutes();
 
             $(this.options.chatHistoryDivId).append('<p class="user-message"><span class="message-text">' + message + '</span><span class="chat-time">' + time + '</span></p>');
         },
@@ -107,6 +106,7 @@ define([
          * Show form
          */
         showForm: function () {
+            $(document).trigger('arteml_interactiveChat_processMessages.arteml_interactiveChat');
             this.element
                 .css('transform', 'translate(0, 0)');
         },
