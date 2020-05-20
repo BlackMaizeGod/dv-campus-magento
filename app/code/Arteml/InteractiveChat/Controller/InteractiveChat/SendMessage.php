@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Arteml\InteractiveChat\Controller\InteractiveChat;
 
-class Index extends \Magento\Framework\App\Action\Action implements
+class SendMessage extends \Magento\Framework\App\Action\Action implements
     \Magento\Framework\App\Action\HttpPostActionInterface
 {
     /**
@@ -28,7 +28,7 @@ class Index extends \Magento\Framework\App\Action\Action implements
     /**
      * @inheritDoc
      * @return \Magento\Framework\App\ResponseInterface|void
-     * url: ajax-interactive-chat/interactiveChat
+     * url: ajax-interactive-chat/interactiveChat/sendMessage
      */
     public function execute()
     {

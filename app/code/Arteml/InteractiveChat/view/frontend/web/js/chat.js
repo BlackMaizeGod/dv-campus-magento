@@ -14,7 +14,7 @@ define([
             messageAreaId: '#chat-message-field',
             chatHistoryDivId: '#chat-history',
             openButtonWrapperElementClass: '.open-interactive-chat',
-            customControllerUrl: url.build('ajax-interactive-chat/interactiveChat')
+            customControllerUrl: url.build('ajax-interactive-chat/interactiveChat/sendMessage')
         },
 
         /**
@@ -99,7 +99,7 @@ define([
             var today = new Date();
             var time = today.getHours() + ':' + today.getMinutes();
 
-            $(this.options.chatHistoryDivId).append('<p class="user-message"><span class="message-text">' + message + '</span><span class="chat-time">' + time + '</span></p>');
+            $(this.options.chatHistoryDivId).append('<p class="customer-message"><span class="message-text">' + message + '</span><span class="chat-time">' + time + '</span></p>');
         },
 
         /**

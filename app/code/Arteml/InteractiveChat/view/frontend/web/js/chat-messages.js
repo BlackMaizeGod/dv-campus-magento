@@ -53,15 +53,22 @@ define([
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
-                };
+            };
 
             messages.forEach(function ($message) {
+                // TODO group message by date
                 var datetime = new Date($message.created_at),
                     date = datetime.toLocaleDateString('en-US', jsonDateOptions),
-                    time = datetime.getHours() + ':' + datetime.getMinutes();
-                console.log(date + ':' + time);
+                    time = datetime.getHours() + ':' + datetime.getMinutes(),
+                    messageHtmlClass = $message.author_type + '-message',
+                    messageHtmlMessage = '<span class="message-content">' + $message.message + '</span>',
+                    messageHtmlTime = '<span class="chat-time">' + time + '</span>',
+                    messageHtml = messageHtmlMessage + messageHtmlTime,
+                    messageContent = '<p class="' + messageHtmlClass + '">'+ messageHtml + '</p>';
 
-            });
+                $(this.element).append(messageContent);
+
+            }.bind(this));
         },
 
         /**
