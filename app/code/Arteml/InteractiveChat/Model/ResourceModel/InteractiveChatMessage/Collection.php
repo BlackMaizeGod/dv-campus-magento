@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Arteml\InteractiveChat\Model\ResourceModel\InteractiveChat;
+namespace Arteml\InteractiveChat\Model\ResourceModel\InteractiveChatMessage;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
@@ -13,8 +13,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         parent::_construct();
         $this->_init(
-            \Arteml\InteractiveChat\Model\InteractiveChat::class,
-            \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChat::class
+            \Arteml\InteractiveChat\Model\InteractiveChatMessage::class,
+            \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChatMessage::class
         );
     }
 }

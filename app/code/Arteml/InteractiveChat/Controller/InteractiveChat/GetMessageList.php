@@ -10,18 +10,18 @@ class GetMessageList extends \Magento\Framework\App\Action\Action implements
     \Magento\Framework\App\Action\HttpGetActionInterface
 {
     /**
-     * @var \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChat\CollectionFactory $messagesCollectionFactory
+     * @var \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChatMessage\CollectionFactory $messagesCollectionFactory
      */
     private $messagesCollectionFactory;
 
     /**
      * GetMessageList constructor.
      * @param Context $context
-     * @param \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChat\CollectionFactory $messagesCollectionFactory
+     * @param \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChatMessage\CollectionFactory $messagesCollectionFactory
      */
     public function __construct(
         Context $context,
-        \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChat\CollectionFactory $messagesCollectionFactory
+        \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChatMessage\CollectionFactory $messagesCollectionFactory
     ) {
         $this->messagesCollectionFactory = $messagesCollectionFactory;
         parent::__construct($context);
@@ -57,7 +57,7 @@ class GetMessageList extends \Magento\Framework\App\Action\Action implements
     {
         $orderByDate = new \Zend_Db_Expr('TIMESTAMP(created_at)');
 
-        /**@var \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChat\Collection $collection */
+        /**@var \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChatMessage\Collection $collection */
         $collection = $this->messagesCollectionFactory->create();
         $collection->setOrder($orderByDate, 'DESC')
             ->setPageSize($count)

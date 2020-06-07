@@ -22,7 +22,7 @@ namespace Arteml\InteractiveChat\Model;
  * @method string getCreatedAt()
  * @method $this setCreatedAt(string $date)
  */
-class InteractiveChat extends \Magento\Framework\Model\AbstractModel
+class InteractiveChatMessage extends \Magento\Framework\Model\AbstractModel
 {
     /**
      * @inheritDoc
@@ -30,7 +30,7 @@ class InteractiveChat extends \Magento\Framework\Model\AbstractModel
     protected function _construct(): void
     {
         parent::_construct();
-        $this->_init(\Arteml\InteractiveChat\Model\ResourceModel\InteractiveChat::class);
+        $this->_init(\Arteml\InteractiveChat\Model\ResourceModel\InteractiveChatMessage::class);
     }
 
     /**
@@ -38,10 +38,10 @@ class InteractiveChat extends \Magento\Framework\Model\AbstractModel
      */
     public function beforeSave(): self
     {
+        // @TODO: see the AbstractModel::validateBeforeSave() method and its' implementation for better implementation
+
         // Allow changing data before save
         parent::beforeSave();
-
-        // @TODO: see the AbstractModel::validateBeforeSave() method and its' implementation for better implementation
 
         return $this;
     }
