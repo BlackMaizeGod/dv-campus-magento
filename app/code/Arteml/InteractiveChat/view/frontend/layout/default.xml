@@ -9,7 +9,7 @@
                    template="Arteml_InteractiveChat::open_button.phtml"
                    after="logo"
             />
-            <block class="Magento\Framework\View\Element\Template"
+            <block class="Arteml\InteractiveChat\Block\InteractiveChatForm"
                    name="interactive.chat.form"
                    template="Arteml_InteractiveChat::form.phtml"
             />

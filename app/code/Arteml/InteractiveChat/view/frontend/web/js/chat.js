@@ -14,6 +14,8 @@ define([
             messageAreaId: '#chat-message-field',
             chatHistoryDivId: '#chat-history',
             openButtonWrapperElementClass: '.open-interactive-chat',
+            messageContentHtmlClass: 'message-content',
+            messageTimeHtmlClass: 'message-time',
             customControllerUrl: url.build('ajax-interactive-chat/interactiveChat/sendMessage')
         },
 
@@ -49,9 +51,12 @@ define([
          *  Submit Form
          */
         submitForm: function () {
-            var that = this;
-            var formData = new FormData($(this.options.formId).get(0));
-            var textarea = $(this.options.messageAreaId);
+            var that = this,
+                formData = new FormData($(this.options.formId).get(0)),
+                textarea = $(this.options.messageAreaId),
+                today = new Date(),
+                time = today.getHours() + ':' + this.roundDatetime(today.getMinutes()),
+                date = today.getFullYear() + "-" + this.roundDatetime(today.getMonth() + 1) + "-" + this.roundDatetime(today.getDate());
 
             if (!this.validateForm()) {
                 return;
@@ -59,6 +64,7 @@ define([
 
             formData.append('form_key', $.mage.cookies.get('form_key'));
             formData.append('isAjax', 1);
+            formData.append('datetime', date + ' ' + time);
 
             $.ajax(
                 {
@@ -76,7 +82,7 @@ define([
                                 content: $.mage.__(response)
                             }
                         );
-                        that.appendMessageToChat(textarea.val());
+                        that.appendMessageToChat(textarea.val(), time);
                         textarea.attr('value', '');
 
                     },
@@ -84,7 +90,7 @@ define([
                         alert(
                             {
                                 title: $.mage.__('Error'),
-                                content: $.mage.__(errorMessage.responseText)
+                                content: $.mage.__(JSON.parse(errorMessage.responseText))
                             }
                         );
                     }
@@ -95,11 +101,12 @@ define([
         /**
          * Append Message To chat
          */
-        appendMessageToChat: function (message) {
-            var today = new Date();
-            var time = today.getHours() + ':' + today.getMinutes();
+        appendMessageToChat: function (message, time) {
+            var messageText = '<span class="' + this.options.messageContentHtmlClass + '">' + message + '</span>',
+                messageTime = '<span class="' + this.options.messageTimeHtmlClass + '">' + time + '</span>',
+                messageContent = messageText + messageTime;
 
-            $(this.options.chatHistoryDivId).append('<p class="customer-message"><span class="message-text">' + message + '</span><span class="chat-time">' + time + '</span></p>');
+            $(this.options.chatHistoryDivId).append('<p class="customer-message">' + messageContent +'</p>');
         },
 
         /**
@@ -109,6 +116,14 @@ define([
             $(document).trigger('arteml_interactiveChat_processMessages.arteml_interactiveChat');
             this.element
                 .css('transform', 'translate(0, 0)');
+        },
+
+        /**
+         * @param value
+         * @returns {string}
+         */
+        roundDatetime: function (value) {
+            return value > 9 ? value : '0' + value;
         },
 
         /**

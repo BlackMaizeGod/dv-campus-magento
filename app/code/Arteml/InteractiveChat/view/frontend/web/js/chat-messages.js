@@ -8,15 +8,24 @@ define([
     $.widget('artemlInteractiveChat.chatMessages', {
         options: {
             messageCount: 10,
-            route: 'ajax-interactive-chat/interactiveChat/getMessageList'
+            route: 'ajax-interactive-chat/interactiveChat/getMessageList',
+            messageContentHtmlClass: 'message-content',
+            messageTimeHtmlClass: 'message-time',
+            messageDateHtmlClass: 'message-date'
         },
 
         /**
          * @private
          */
         _create: function () {
-            $(document).on('arteml_interactiveChat_processMessages.arteml_interactiveChat', this.ajaxGetLastMessages.bind(this));
-            $(document).on('arteml_interactiveChat_clearMessageArea.arteml_interactiveChat', this.clearMessageArea.bind(this));
+            $(document).on(
+                'arteml_interactiveChat_processMessages.arteml_interactiveChat',
+                this.ajaxGetLastMessages.bind(this)
+            );
+            $(document).on(
+                'arteml_interactiveChat_clearMessageArea.arteml_interactiveChat',
+                this.clearMessageArea.bind(this)
+            );
         },
 
         /**
@@ -56,18 +65,20 @@ define([
             };
 
             messages.forEach(function ($message) {
-                // TODO group message by date
                 var datetime = new Date($message.created_at),
                     date = datetime.toLocaleDateString('en-US', jsonDateOptions),
-                    time = datetime.getHours() + ':' + datetime.getMinutes(),
+                    time = datetime.getHours() + ':' + (datetime.getMinutes() > 9 ? datetime.getMinutes() : '0' + datetime.getMinutes()),
                     messageHtmlClass = $message.author_type + '-message',
-                    messageHtmlMessage = '<span class="message-content">' + $message.message + '</span>',
-                    messageHtmlTime = '<span class="chat-time">' + time + '</span>',
+                    messageHtmlMessage = '<span class="' + this.options.messageContentHtmlClass +'">' + $message.message + '</span>',
+                    messageHtmlTime = '<span class="' + this.options.messageTimeHtmlClass + '">' + time + '</span>',
                     messageHtml = messageHtmlMessage + messageHtmlTime,
                     messageContent = '<p class="' + messageHtmlClass + '">'+ messageHtml + '</p>';
 
-                $(this.element).append(messageContent);
+                $(this.element).children('.' + this.options.messageDateHtmlClass).last().text() !== date
+                    ? $(this.element).append('<p class="' + this.options.messageDateHtmlClass + '"><span>' + date +'</span></p>')
+                    : false;
 
+                $(this.element).append(messageContent);
             }.bind(this));
         },
 
