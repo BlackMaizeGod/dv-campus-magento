@@ -56,9 +56,9 @@ services:
       - "artem-lohvynenko.local www.artem-lohvynenko.local artem-lohvynenko-additional-website.local www.artem-lohvynenko-additional-website.local artem-lohvynenko-geekhub.local www.artem-lohvynenko-geekhub.local:127.0.0.1"
       # Required for xDebug on Linux hosts till docker.host.internal is not available by default - https://github.com/docker/libnetwork/pull/2348/files
       - "host.docker.internal:172.17.0.1"
-#    links:
+    links:
 #      - memcached
-#      - redis
+      - redis
 #      - elasticsearch
     external_links:
       - mysql57:mysql
@@ -83,12 +83,12 @@ services:
 #  artem-lohvynenko-local-sync:
 #    external: true
 
-#  redis:
-#    image: redis:latest
-#    network_mode: bridge
-#    labels:
-#      - traefik.enable=false
-#    restart: always
+  redis:
+    image: redis:latest
+    network_mode: bridge
+    labels:
+      - traefik.enable=false
+    restart: always
 
 #  memcached:
 #    image: 'memcached:1.5'
