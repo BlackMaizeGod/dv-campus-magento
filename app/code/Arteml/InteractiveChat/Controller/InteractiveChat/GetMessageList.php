@@ -15,15 +15,23 @@ class GetMessageList extends \Magento\Framework\App\Action\Action implements
     private $messagesCollectionFactory;
 
     /**
+     * @var \Magento\Customer\Model\Session $customerSession
+     */
+    private $customerSession;
+
+    /**
      * GetMessageList constructor.
-     * @param Context $context
      * @param \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChatMessage\CollectionFactory $messagesCollectionFactory
+     * @param \Magento\Customer\Model\Session $customerSession
+     * @param Context $context
      */
     public function __construct(
-        Context $context,
-        \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChatMessage\CollectionFactory $messagesCollectionFactory
+        \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChatMessage\CollectionFactory $messagesCollectionFactory,
+        \Magento\Customer\Model\Session $customerSession,
+        Context $context
     ) {
         $this->messagesCollectionFactory = $messagesCollectionFactory;
+        $this->customerSession = $customerSession;
         parent::__construct($context);
     }
 
@@ -59,8 +67,15 @@ class GetMessageList extends \Magento\Framework\App\Action\Action implements
 
         /**@var \Arteml\InteractiveChat\Model\ResourceModel\InteractiveChatMessage\Collection $collection */
         $collection = $this->messagesCollectionFactory->create();
-        $collection->setOrder($orderByDate, 'DESC')
-            ->setPageSize($count)
+        $collection->setOrder($orderByDate, 'DESC');
+        if ($customerId = $this->customerSession->getCustomerId()) {
+            $collection->addFieldToFilter('author_id', $customerId);
+        } elseif ($chatHash = $this->customerSession->getData('customer_hash')) {
+            $collection->addFieldToFilter('chat_hash', $chatHash);
+        } else {
+            return [];
+        }
+        $collection->setPageSize($count)
             ->load();
 
         return array_reverse($collection->getData());

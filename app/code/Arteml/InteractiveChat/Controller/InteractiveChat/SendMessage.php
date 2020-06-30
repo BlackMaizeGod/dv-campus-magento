@@ -28,11 +28,17 @@ class SendMessage extends \Magento\Framework\App\Action\Action implements
     private $storeManager;
 
     /**
+     * @var \Magento\Framework\Encryption\EncryptorInterface $encryptor
+     */
+    private $encryptor;
+
+    /**
      * Index constructor.
      * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
      * @param \Arteml\InteractiveChat\Model\InteractiveChatMessageFactory $chatMessageFactory
      * @param \Magento\Customer\Model\Session $customerSession
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Framework\Encryption\EncryptorInterface $encryptor
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(
@@ -40,12 +46,14 @@ class SendMessage extends \Magento\Framework\App\Action\Action implements
         \Arteml\InteractiveChat\Model\InteractiveChatMessageFactory $chatMessageFactory,
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Magento\Framework\Encryption\EncryptorInterface $encryptor,
         \Magento\Framework\App\Action\Context $context
     ) {
         $this->formKeyValidator = $formKeyValidator;
         $this->chatMessageFactory = $chatMessageFactory;
         $this->customerSession = $customerSession;
         $this->storeManager = $storeManager;
+        $this->encryptor = $encryptor;
         parent::__construct($context);
     }
 
@@ -83,13 +91,18 @@ class SendMessage extends \Magento\Framework\App\Action\Action implements
                     ? $currentCustomer->getName()
                     : $request->getParam('customer_name');
 
+                $this->customerSession->getData('customer_hash')
+                ?? $this->customerSession->setData(
+                    'customer_hash',
+                    $this->encryptor->encrypt($this->customerSession->getSessionId())
+                );
+
                 $chatMessage->setAuthorType('customer')
                     ->setAuthorId($currentCustomer !== null ? $currentCustomer->getId() : null)
                     ->setAuthorName($customerName)
                     ->setMessage($request->getParam('message'))
                     ->setWebsiteId($this->storeManager->getWebsite()->getId())
-                    // @TODO work on chat hash
-                    ->setChatHash('$2y$10$hgf739hXoxkvMVJlwzUOleqy0aXVfVZTT4cFOnCteO3IuAt3HWkie')
+                    ->setChatHash($this->customerSession->getData('customer_hash'))
                     ->setCreatedAt($request->getParam('datetime'));
                 $chatMessage->save();
             } catch (\Exception $e) {

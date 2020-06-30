@@ -22,7 +22,7 @@
         <column xsi:type="smallint" name="website_id" padding="5" unsigned="true" nullable="false"
                 comment="Website ID"
         />
-        <column xsi:type="varchar" name="chat_hash" nullable="false" length="63"
+        <column xsi:type="varchar" name="chat_hash" nullable="false" length="76"
                 comment="Chat Hash"
         />
         <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
