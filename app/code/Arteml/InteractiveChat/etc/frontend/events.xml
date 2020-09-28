@@ -1,0 +1,5 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_data_object_login">
+        <observer name="dv_customer_login" instance="Arteml\InteractiveChat\Observer\BindCustomerIdToChat" />
+    </event>
+</config>
