@@ -52,20 +52,27 @@
             height: 350px;
             border-bottom: 2px solid @color-dark-blue;
 
-            .operator-message {
+            .admin-message {
                 background: @color-info__bootstrap;
                 align-self: flex-start;
                 margin-left: 10px;
             }
 
-            .user-message {
+            .customer-message {
                 margin-right: 10px;
                 background: @color-success;
                 align-self: flex-end;
             }
 
-            .operator-message,
-            .user-message {
+            .message-date {
+                background: @color-gray-darken4;
+                color: @color-white;
+                align-self: center;
+            }
+
+            .customer-message,
+            .admin-message,
+            .message-date {
                 display: flex;
                 flex-direction: column;
                 margin-top: 5px;
@@ -77,14 +84,14 @@
                 border-radius: 0.25rem;
             }
 
-            .chat-time {
+            .message-time {
                 color: @color-black;
                 font-size: 12px;
                 align-self: flex-end;
             }
         }
 
-        .user-text-area {
+        .customer-answer-wrapper {
             margin: auto;
             box-sizing: border-box;
 
@@ -113,6 +120,10 @@
                     }
                 }
             }
+        }
+
+        .margin-bottom-10px {
+            margin-bottom: 10px;
         }
     }
 }
@@ -145,7 +156,7 @@
         font-size: 16px;
 
         .action.submit.primary,
-        textarea {
+        .customer-answer-wrapper {
             font-size: 16px;
         }
     }

@@ -1,4 +1,4 @@
-<?php /** @var \Magento\Framework\View\Element\Template $block */ ?>
+<?php /** @var \Arteml\InteractiveChat\Block\InteractiveChatForm $block */ ?>
 <div class="wrapper-for-chat-window"
      id="wrapper-for-chat-window"
      style="transform: translate(200%, 0)"
@@ -20,25 +20,38 @@
         </div>
         <div class="wrapper-for-chat-form-fields">
             <fieldset class="fieldset">
-                <div class="chat-history" id="chat-history">
-                    <p class="operator-message">i`m operator</p>
-                    <p class="user-message">i`am user</p>
-                </div>
+                <div class="chat-history" id="chat-history" data-mage-init='{"arteml_interactiveChat_chatMessages": {}}'></div>
             </fieldset>
+            <?php if(!$block->isCustomerLoggedIn()): ?>
+                <fieldset class="fieldset margin-bottom-10px">
+                    <div class="field required customer-answer-wrapper">
+                        <label class="label"
+                               for="customer-name"><span><?= $block->escapeHtml(__('Enter your name, please')) ?></span></label>
+                        <div class="control">
+                            <input type="text"
+                                   id="customer-name"
+                                   name="customer_name"
+                                   placeholder="<?= $block->escapeHtmlAttr(__('Enter your name here')) ?>"
+                                   data-validate='{"required":true, "minlength":5, "maxlength": 20}'
+                            />
+                        </div>
+                    </div>
+                </fieldset>
+            <?php endif; ?>
             <fieldset class="fieldset">
-                <div class="field required user-text-area">
+                <div class="field required customer-answer-wrapper">
                     <label class="label"
                            for="chat-message-field"><span><?= $block->escapeHtml(__('Message to administrator')) ?></span></label>
                     <div class="control">
-                        <textarea class="chat-messages"
+                        <textarea class="customer-answer"
                                   name="message"
                                   id="chat-message-field"
                                   cols="30"
                                   rows="10"
                                   autofocus
                                   maxlength="255"
-                                  placeholder="<?= $block->escapeHtmlAttr(__('Input ur message here')) ?>"
-                                  data-validate='{"required":true, "minlength":10, "maxlength": 255}'
+                                  placeholder="<?= $block->escapeHtmlAttr(__('Enter your message here')) ?>"
+                                  data-validate='{"required":true, "minlength":5, "maxlength": 255}'
                         ></textarea>
                     </div>
                 </div>
@@ -48,7 +61,7 @@
             <div class="primary">
                 <input type="hidden" name="hideit" id="hideit" value=""/>
                 <button type="submit" title="<?= $block->escapeHtmlAttr(__('Save')) ?>" class="action submit primary">
-                    <span><?= $block->escapeHtml(__('Save')) ?></span>
+                    <span><?= $block->escapeHtml(__('Send')) ?></span>
                 </button>
             </div>
         </div>

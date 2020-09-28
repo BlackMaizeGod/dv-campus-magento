@@ -1,7 +1,6 @@
 define([
     'jquery',
-    'jquery/ui',
-    'mage/translate'
+    'jquery/ui'
 ], function ($) {
     'use strict';
 
@@ -20,7 +19,6 @@ define([
         _destroy: function () {
             $(this.element).off('click.arteml_interactiveChat');
         },
-
 
         /**
          * Open Modal
