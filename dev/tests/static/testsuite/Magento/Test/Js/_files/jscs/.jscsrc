@@ -115,14 +115,5 @@
         "enforceExistence": "exceptExports",
         "requireHyphenBeforeDescription": true,
         "requireParamTypes": true
-    },
-  "excludeFiles": [
-    "../../../../../../../../../app/code/GeekHub/AskQuestion/view/frontend/web/js/submit-question.js",
-    "../../../../../../../../../app/code/GeekHub/RegistrationForm/view/frontend/web/js/additional-registration-form.js",
-    "../../../../../../../../../app/code/GeekHub/AskQuestion/view/frontend/web/js/ua-phone-number-validation.js",
-    "../../../../../../../../../app/code/GeekHub/AskQuestion/view/frontend/web/js/validation/validator-mixin.js",
-    "../../../../../../../../../app/code/GeekHub/AskQuestion/view/frontend/web/js/validation-alert.js",
-    "../../../../../../../../../app/design/frontend/Arteml/penumbra/Magento_Catalog/web/js/m2kocomponent.js",
-    "../../../../../../../../../app/design/frontend/Arteml/penumbra/Magento_Catalog/web/js/rgb-model.js"
-  ]
+    }
 }
